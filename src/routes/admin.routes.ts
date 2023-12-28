@@ -1,5 +1,5 @@
 import express from "express";
-import { listadoProductos, crearProducto, actualizarProducto, eliminarProducto } from "../controller/adminController.js";
+import { listadoProductos, crearProducto, actualizarProducto, eliminarProducto } from "../controller/admin.controller";
 
 const router = express.Router();
 

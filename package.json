@@ -1,12 +1,11 @@
 {
-  "name": "backend-plantillas",
+  "name": "backend-dosports",
   "version": "1.0.0",
-  "description": "plantillas para los sistemas que vamos a hacer con el parce",
+  "description": "backend para dosports",
   "main": "src/index.js",
-  "type": "module",
   "scripts": {
-    "dev": "nodemon src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "tsc": "tsc",
+    "start": "nodemon"
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +18,12 @@
     "mongoose": "^8.0.3"
   },
   "devDependencies": {
-    "nodemon": "^3.0.2"
+    "@types/cors": "^2.8.17",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.21",
+    "@types/mongoose": "^5.11.97",
+    "nodemon": "^3.0.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
   }
 }

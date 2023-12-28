@@ -1,9 +1,8 @@
 import express from "express";
 import dotenv from "dotenv"
-import conectarDB from "./src/config/db.js";
-import cors from "cors";
-import adminRoutes from "./src/routes/admin.routes.js";
-import authRoutes from "./src/routes/auth.routes.js";
+import conectarDB from "./config/db";
+import cors, {CorsOptions} from "cors";
+import adminRoutes from "./routes/admin.routes";
 
 const app = express();
 app.use(express.json({ limit: '20mb' }));
@@ -14,21 +13,20 @@ conectarDB();
 
 //Configuracion para Cors
 const dominiosPermitidos = [process.env.FRONTEND_URL];
-const corsOptions = {
-  origin: (origin,callback) => {
-    if (dominiosPermitidos.indexOf(origin) !== -1) {
-      callback(null,true)
-    }else{
-      callback(new Error("No permitido por cors"))
+const corsOptions: CorsOptions = {
+  origin: (origin, callback) => {
+    if (!origin || dominiosPermitidos.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("No permitido por cors"), false);
     }
   }
-}
+};
 
 app.use(cors(corsOptions));
 
 //Crud de productos
 app.use("/api", adminRoutes);
-app.use("/api", authRoutes);
 
 const PORT = process.env.PORT || 4000
 
